@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-controller="RubyDocCtrl">
+<head>
+    <title></title>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="page.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="page.css" type="text/css">
+</head>
+<body style="width:300px;height: 350px;">
+<div class="container">
+    <div class="row" style="margin-left: 5px;margin-right: 5px">
+        <form role="search" ng-submit="filter()">
+            <h3><span class="label label-primary">Class</span></h3>
+
+            <div class="form-group">
+                <input id="class_input" class="form-control" ng-model="class" placeholder="Enter Class Name"
+                       typeahead="class as class.label for class in classes | filter:{label: $viewValue}:startsWith"
+                       typeahead-on-select="filter('class')" auto-focus>
+            </div>
+
+            <h3><span class="label label-success">Method</span></h3>
+
+            <div class="form-group">
+                <input id="method_input" class="form-control" ng-model="method" placeholder="Enter Method Name"
+                       typeahead="method as method.label for method in methods | filter:{label: $viewValue}:startsWith"
+                       typeahead-on-select="filter('method')">
+            </div>
+        </form>
+    </div>
+    <div class="row text-center">
+         <div class="btn-group">
+            <button type="button" class="btn btn-primary" ng-model="version" btn-radio="'2.1.1'" ng-change="updateStorage()">2.1.1</button>
+            <button type="button" class="btn btn-primary" ng-model="version" btn-radio="'1.9.3'" ng-change="updateStorage()">1.9.3</button>
+            <button type="button" class="btn btn-primary" ng-model="version" btn-radio="'1.8.7'" ng-change="updateStorage()">1.8.7</button>
+        </div>
+        <h3 style="color: darkred">RubyDoc <span class="label label-danger">{{version}}</span></h3>
+    </div>
+</div>
+</body>
+</html>

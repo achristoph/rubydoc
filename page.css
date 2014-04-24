@@ -1,0 +1,6 @@
+ul.dropdown-menu {
+  height: 150px;
+  width: 260px;
+  overflow-y: auto;
+}
+
